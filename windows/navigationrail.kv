@@ -1,0 +1,103 @@
+#  import the python files defining the Screens
+#: import PhotoWindow windows.photoWindow.PhotoWindow
+#: import FourthWindow windows.fourthWindow.FourthWindow
+#: import MainReportWindow windows.mainReportWindow.MainReportWindow
+#: import ProfileWindow windows.profileWindow.ProfileWindow
+#: import LogInOut windows.logInOut.LogInOut
+#: import FileChoose windows.fileChoose.FileChoose
+#: import ReportsWindowDetail windows.reportsWindowDetail.ReportsWindowDetail
+#: import FilterOFItemWindow windows.filterOFItemWindow.FilterOFItemWindow
+#: import ReportTableWindow windows.reportTableWindow.ReportTableWindow
+#: import SettingsWindow windows.settingsWindow
+#: import NewItemWindow windows.newItemWindow
+#: import OperationMainWindow windows.operationMainWindow
+
+#  include the kv files for the other Screens
+#: include windows/photo.kv
+#: include windows/qr.kv
+#: include windows/fourth.kv
+#: include windows/mainReport.kv
+#: include windows/profile.kv
+#: include windows/logInOut.kv
+#: include windows/fileChoose.kv
+#: include windows/reportsWindowDetail.kv
+#: include windows/filterOFItem.kv
+#: include windows/reportTable.kv
+#: include windows/settings.kv
+#: include windows/newItem.kv
+#: include windows/operationMain.kv
+
+<Navigationrail>
+    name: "Navigationrail"
+
+    AKNavigationrail:
+        id: rail
+
+        AKNavigationrailCustomItem:
+            size_hint_y: None
+
+            height: dp(60)
+            padding: dp(5)
+            #md_bg_color: 1, 0, 1, 1
+
+            MDIconButton:
+                icon: "menu"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+                on_release:
+                    if rail.get_state() == "open": rail.dismiss(); self.icon ="arrow-left"
+                    else: rail.open(); self.icon="menu"
+
+        AKNavigationrailItem:
+            id: profileIcon
+            text: "Профиль"
+            icon: "account-circle-outline"
+            on_release: root.switch_to_profile()
+
+        AKNavigationrailItem:
+            text: "Фото"
+            icon: "camera-plus-outline"
+            on_release: root.switchToPhoto()
+
+        AKNavigationrailItem:
+            id: QRIcon
+            text: "Загрузить"
+            icon: "file-upload-outline"
+            #md_bg_color: app.theme_cls.bg_darkest
+            on_release: root.switchToQR()
+
+        AKNavigationrailItem:
+            text: "Операция"
+            icon: "file-cog-outline"
+            on_release: root.switchToOparationMain()
+
+        AKNavigationrailItem:
+            text: "Номенклатура"
+            icon: "view-list-outline"
+            on_release: root.switchToFourth()
+
+
+        AKNavigationrailItem:
+            text: "Поиск"
+            #icon: "magnify"
+            icon: "align-vertical-bottom"
+            on_release: root.switchToMainReport()
+
+        AKNavigationrailItem:
+            text: "Настройки"
+            icon: "cog"
+            on_release: root.switchToSettings()
+
+        AKNavigationrailItem:
+            text: "Выйти"
+            icon: "exit-to-app"
+            on_release: root.switchToLogInOut()
+
+        AKNavigationrailCustomItem:
+            size_hint_x: 0.2
+
+        AKNavigationrailContent:
+
+            ScreenManager:
+                id: scr_mng
