@@ -1,31 +1,22 @@
 #  import the python files defining the Screens
-#: import PhotoWindow windows.photoWindow.PhotoWindow
-#: import FourthWindow windows.fourthWindow.FourthWindow
-#: import MainReportWindow windows.mainReportWindow.MainReportWindow
-#: import ProfileWindow windows.profileWindow.ProfileWindow
-#: import LogInOut windows.logInOut.LogInOut
-#: import FileChoose windows.fileChoose.FileChoose
-#: import ReportsWindowDetail windows.reportsWindowDetail.ReportsWindowDetail
-#: import FilterOFItemWindow windows.filterOFItemWindow.FilterOFItemWindow
-#: import ReportTableWindow windows.reportTableWindow.ReportTableWindow
-#: import SettingsWindow windows.settingsWindow
-#: import NewItemWindow windows.newItemWindow
-#: import OperationMainWindow windows.operationMainWindow
+#: import NewWindow windows.newWindow.NewWindow
+#: import ContinueWindow windows.continueWindow.ContinueWindow
+#: import GameWindow windows.gameWindow.GameWindow
+#: import ReportWindow windows.reportWindow.ReportWindow
+#: import SaveWindow windows.saveWindow.SaveWindow
+#: import SettingsWindow windows.settingsWindow.SettingsWindow
+#: import LogInOutWindow windows.logInOutWindow.LogInOutWindow
+#: import NewSettingsWindow windows.newSettingsWindow.NewSettingsWindow
 
 #  include the kv files for the other Screens
-#: include windows/photo.kv
-#: include windows/qr.kv
-#: include windows/fourth.kv
-#: include windows/mainReport.kv
-#: include windows/profile.kv
-#: include windows/logInOut.kv
-#: include windows/fileChoose.kv
-#: include windows/reportsWindowDetail.kv
-#: include windows/filterOFItem.kv
-#: include windows/reportTable.kv
+#: include windows/new.kv
+#: include windows/continue.kv
+#: include windows/game.kv
+#: include windows/report.kv
+#: include windows/save.kv
 #: include windows/settings.kv
-#: include windows/newItem.kv
-#: include windows/operationMain.kv
+#: include windows/logInOut.kv
+#: include windows/newSettings.kv
 
 <Navigationrail>
     name: "Navigationrail"
@@ -50,39 +41,33 @@
                     else: rail.open(); self.icon="menu"
 
         AKNavigationrailItem:
-            id: profileIcon
-            text: "Профиль"
-            icon: "account-circle-outline"
-            on_release: root.switch_to_profile()
-
-        AKNavigationrailItem:
-            text: "Фото"
-            icon: "camera-plus-outline"
-            on_release: root.switchToPhoto()
-
-        AKNavigationrailItem:
             id: QRIcon
-            text: "Загрузить"
+            text: "Новая"
             icon: "file-upload-outline"
             #md_bg_color: app.theme_cls.bg_darkest
-            on_release: root.switchToQR()
+            on_release: root.switchToNew()
 
         AKNavigationrailItem:
-            text: "Операция"
+            text: "Продолжить"
+            icon: "camera-plus-outline"
+            on_release: root.switchToContinue()
+
+        AKNavigationrailItem:
+            id: profileIcon
+            text: "Игра"
+            icon: "account-circle-outline"
+            on_release: root.switchToGame()
+
+
+        AKNavigationrailItem:
+            text: "Счет"
             icon: "file-cog-outline"
-            on_release: root.switchToOparationMain()
+            on_release: root.switchToReport()
 
         AKNavigationrailItem:
-            text: "Номенклатура"
+            text: "Сохранить"
             icon: "view-list-outline"
-            on_release: root.switchToFourth()
-
-
-        AKNavigationrailItem:
-            text: "Поиск"
-            #icon: "magnify"
-            icon: "align-vertical-bottom"
-            on_release: root.switchToMainReport()
+            on_release: root.switchToSave()
 
         AKNavigationrailItem:
             text: "Настройки"

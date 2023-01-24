@@ -1,19 +1,24 @@
 from kivymd.uix.screen import MDScreen
 import appEnvironment as AE
-from windows.fileChoose import FileChoose
 
-from windows.fourthWindow import FourthWindow
-from windows.logInOut import LogInOut
-from windows.mainReportWindow import MainReportWindow
-from windows.newItemWindow import NewItemWindow
-from windows.photoWindow import PhotoWindow
-from windows.profileWindow import ProfileWindow
-from windows.qrWindow import QRWindow
-from windows.reportsWindowDetail import ReportsWindowDetail
-from windows.reportTableWindow import ReportTableWindow
-from windows.filterOFItemWindow import FilterOFItemWindow
+from windows.newWindow import NewWindow
+from windows.continueWindow import ContinueWindow
+from windows.gameWindow import GameWindow
+from windows.reportWindow import ReportWindow
+from windows.saveWindow import SaveWindow
 from windows.settingsWindow import SettingsWindow
-from windows.operationMainWindow import OperationMainWindow
+from windows.logInOutWindow import LogInOutWindow
+from windows.newSettingsWindow import NewSettingsWindow
+
+#  include the kv files for the other Screens
+#: include windows/new.kv
+#: include windows/continue.kv
+#: include windows/game.kv
+#: include windows/report.kv
+#: include windows/save.kv
+#: include windows/settings.kv
+#: include windows/logInOut.kv
+#: include windows/newSettings.kv
 
 
 class ReportWindowDetail(object):
@@ -24,77 +29,36 @@ class Navigationrail(MDScreen):
     # Create the screen manager
     def __init__(self, *args, **kwargs):
         super(Navigationrail, self).__init__(*args, **kwargs)
-        self.ids.scr_mng.add_widget(LogInOut(name='loginout'))
-        self.ids.scr_mng.add_widget(ProfileWindow(name='profile'))
-        self.ids.scr_mng.add_widget(PhotoWindow(name='photo'))
-        self.ids.scr_mng.add_widget(QRWindow(name='qr'))
-        self.ids.scr_mng.add_widget(FourthWindow(name='fourth'))
-        self.ids.scr_mng.add_widget(MainReportWindow(name='mainreport'))
-        self.ids.scr_mng.add_widget(FileChoose(name='filechoose'))
-        self.ids.scr_mng.add_widget(ReportsWindowDetail(name='reportOfItem'))
-        self.ids.scr_mng.add_widget(ReportTableWindow(name='reportTable'))
-        self.ids.scr_mng.add_widget(FilterOFItemWindow(name='filterOfItem'))
+        self.ids.scr_mng.add_widget(NewWindow(name='new'))
+        self.ids.scr_mng.add_widget(ContinueWindow(name='continue'))
+        self.ids.scr_mng.add_widget(GameWindow(name='game'))
+        self.ids.scr_mng.add_widget(ReportWindow(name='report'))
+        self.ids.scr_mng.add_widget(SaveWindow(name='save'))
         self.ids.scr_mng.add_widget(SettingsWindow(name='settings'))
-        self.ids.scr_mng.add_widget(NewItemWindow(name='newItem'))
-        self.ids.scr_mng.add_widget(OperationMainWindow(name='operationMain'))
-        self.ids.scr_mng.current = 'loginout'
+        self.ids.scr_mng.add_widget(LogInOutWindow(name='logInOut'))
+        self.ids.scr_mng.add_widget(NewSettingsWindow(name='newSettings'))
         AE.NavigationrailObj = self
 
-    def switchToFourth(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'fourth'
+    def switchToNew(self):
+        self.ids.scr_mng.current = 'new'
 
-    def switchToPhoto(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'photo'
+    def switchToContinue(self):
+        self.ids.scr_mng.current = 'continue'
 
-    def switchToMainReport(self):
-        if (AE.login):
-            AE.listOfItemsView = 2
-            self.ids.scr_mng.current = 'mainreport'
+    def switchToGame(self):
+        self.ids.scr_mng.current = 'game'
 
-    def switchToQR(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'qr'
+    def switchToReport(self):
+        self.ids.scr_mng.current = 'report'
 
-    def switch_to_profile(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'profile'
-
-    def switchToLogInOut(self):
-        AE.ServerProxyObj.logout()
-        AE.LogInOutObj.clear()
-        AE.login = False
-        self.ids.scr_mng.current = 'loginout'
-
-    def switchToFileChoose(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'filechoose'
-
-    def switchToReportWindowDetail(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'reportOfItem'
-
-    def switchToReportTable(self):
-        AE.LogInOutObj.clear()
-        self.ids.scr_mng.current = 'reportTable'
-
-    def switchToFilterOFItem(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'filterOfItem'
+    def switchToSave(self):
+        self.ids.scr_mng.current = 'save'
 
     def switchToSettings(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'settings'
+        self.ids.scr_mng.current = 'settings'
 
-    def switchToNewItem(self):
-        if (AE.login):
-            self.ids.scr_mng.current = 'newItem'
+    def switchToLogInOut(self):
+        self.ids.scr_mng.current = 'logInOut'
 
-    def switchToOparationMain(self):
-        if (AE.login):
-            AE.OperationMainWObj.dellWidgetFilter()
-            AE.OperationMainWObj.ScrollWindowPartTypeFilter()
-            AE.OperationMainWObj.ScrollWindowFilter()
-            #AE.OperationMainWObj.ScrollWindow()
-            self.ids.scr_mng.current = 'operationMain'
+    def switchToNewGameSettings(self):
+        self.ids.scr_mng.current = 'newSettings'

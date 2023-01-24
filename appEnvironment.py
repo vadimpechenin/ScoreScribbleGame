@@ -7,25 +7,16 @@ koef = 1
 login = False
 
 TestObj = None
-NavigationrailObj = None
-LogInOutObj = None
-ProfileWObj = None
-FourthWObj = None
-MainReportWObj = None
-PhotoWObj = None
-QRWObj = None
-FileChooseWObj = None
-ReportsWindowDetailObj = None
-FilterOFItemWObj = None
-ReportTableWObj = None
-SettingsWObj = None
-OperationMainWObj = None
-
-FileChooseObj = None
-ClientProxyObj = None
-
 ApplicationSettingObj = None
-NewItemObj = None
+
+NewWObj = None
+ContinueWObj = None
+GameWObj = None
+ReportWObj = None
+SaveWObj = None
+SettingsWObj = None
+LogInOutWObj = None
+NewSettingsWObj = None
 
 nameOfJson = 'json_data.json'
 
