@@ -40,6 +40,7 @@ class Navigationrail(MDScreen):
         AE.NavigationrailObj = self
 
     def switchToNew(self):
+        AE.NewWObj.item = 0
         self.ids.scr_mng.current = 'new'
 
     def switchToContinue(self):

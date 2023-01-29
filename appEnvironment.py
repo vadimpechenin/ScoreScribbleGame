@@ -17,16 +17,22 @@ SaveWObj = None
 SettingsWObj = None
 LogInOutWObj = None
 NewSettingsWObj = None
+NavigationrailObj = None
 
 nameOfJson = 'json_data.json'
 
 kv = None
 
+ServerHost = "127.0.0.1"
+ServerPort = 8080
+ServerProxyObj = None
 
-fourthTrigger = 0
-listOfItemsView = 0
+title_of_windows = ['Новая игра',
+                    'Продолжить игру',
+                    'Игровой процесс',
+                    'Сохранение игры',
+                    'Меню настроек',
+                    'Меню выхода']
 
-reportsWindowDetailPartName = ''
-reportsWindowDetailMessageResponce = None
-
-
+title_label_new = ['Введите имя игрока ',
+                   'Введите название файла']

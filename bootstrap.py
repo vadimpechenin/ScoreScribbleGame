@@ -4,6 +4,7 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 
 from model.applicationSettings import ApplicationSettings
+from serverProxy import ServerProxy
 from test import Test
 
 
@@ -18,7 +19,7 @@ class Bootstrap:
         AE.kv = Builder.load_file("windows/navigationrail.kv")
         AE.TestObj = Test()
         AE.ApplicationSettingObj = ApplicationSettings()
-
+        AE.ServerProxyObj = ServerProxy(AE.ServerHost, AE.ServerPort)
     @staticmethod
     def run():
         AE.TestObj.run()

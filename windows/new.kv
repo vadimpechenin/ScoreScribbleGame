@@ -1,6 +1,61 @@
 <NewWindow>
     name: "new"
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 7
+        MDLabel:
+            id: text_label
+            halign: 'center'
+            valign: 'top'
+            size_hint_y: None
+            padding_y: 15
 
-    MDLabel:
-        text: "New"
-        halign: "center"
+        BoxLayout:
+            cols: 1
+            MDLabel:
+                id: text_label1
+                color: 'black'
+                pos_hint: {'center_x': .6, 'center_y': .5}
+
+        BoxLayout:
+            cols: 1
+            TextInput:
+                id: text_input1
+                font_size: '45sp'
+                multiline: True
+                font_size: 15
+                color: 'black'
+
+        Button:
+            text: 'Ввести'
+            size_hint_y: None
+            height: '48dp'
+            width: '420dp'
+            #Обработчик
+            on_release:
+                root.addNewGamer()
+
+        BoxLayout:
+            cols: 1
+            MDLabel:
+                id: text_label2
+                color: 'black'
+                pos_hint: {'center_x': .6, 'center_y': .5}
+
+        BoxLayout:
+            cols: 1
+            TextInput:
+                id: text_input2
+                font_size: '45sp'
+                multiline: True
+                font_size: 15
+                color: 'black'
+
+        Button:
+            text: 'Закончить ввод'
+            size_hint_y: None
+            height: '48dp'
+            width: '420dp'
+            #Обработчик
+            on_release:
+                root.newGame()
