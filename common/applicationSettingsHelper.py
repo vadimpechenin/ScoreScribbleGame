@@ -8,6 +8,7 @@ from kivy.utils import platform
 
 from common.commonUtils import CommonUtils
 
+import appEnvironment as AE
 
 class ApplicationSettingHelper():
     @staticmethod
@@ -27,8 +28,10 @@ class ApplicationSettingHelper():
     def readSettingsFromFile(filename, parameters):
         #Добавить путь, прочитать из файла, формат json
         base_dir = ApplicationSettingHelper.base_dir_done()
-
-        json_file_name = join(base_dir, filename)
+        if (len(AE.filenameEnv) > 0):
+            json_file_name = AE.filenameEnv[0]
+        else:
+            json_file_name = join(base_dir, filename)
 
         with open(json_file_name) as json_file:
             data = json.load(json_file)

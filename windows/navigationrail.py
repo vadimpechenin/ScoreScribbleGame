@@ -1,5 +1,6 @@
 from kivymd.uix.screen import MDScreen
 import appEnvironment as AE
+from windows.fileChoose import FileChoose
 
 from windows.newWindow import NewWindow
 from windows.continueWindow import ContinueWindow
@@ -37,6 +38,7 @@ class Navigationrail(MDScreen):
         self.ids.scr_mng.add_widget(SettingsWindow(name='settings'))
         self.ids.scr_mng.add_widget(LogInOutWindow(name='logInOut'))
         self.ids.scr_mng.add_widget(NewSettingsWindow(name='newSettings'))
+        self.ids.scr_mng.add_widget(FileChoose(name='filechoose'))
         AE.NavigationrailObj = self
 
     def switchToNew(self):
@@ -63,3 +65,6 @@ class Navigationrail(MDScreen):
 
     def switchToNewGameSettings(self):
         self.ids.scr_mng.current = 'newSettings'
+
+    def switchToFileChoose(self):
+        self.ids.scr_mng.current = 'filechoose'

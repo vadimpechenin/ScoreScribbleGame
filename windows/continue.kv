@@ -1,6 +1,47 @@
 <ContinueWindow>
     name: "continue"
 
-    MDLabel:
-        text: "Continue"
-        halign: "center"
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 6
+
+        MDLabel:
+            id: text_label
+            halign: 'center'
+            valign: 'top'
+            size_hint_y: None
+            padding_y: 15
+
+        GridLayout:
+            rows: 1
+            MDLabel:
+                id: text_label1
+                color: 'black'
+                pos_hint: {'center_x': .6, 'center_y': .5}
+
+        BoxLayout:
+            cols: 1
+            TextInput:
+                id: text_input1
+                font_size: '45sp'
+                multiline: True
+                font_size: 15
+                color: 'black'
+
+        Button:
+            text: 'Выбрать файл'
+            size_hint_y: None
+            height: '48dp'
+            width: '420dp'
+            #Обработчик
+            on_release:
+                root.addLoadFile()
+
+        Button:
+            text: 'Загрузить игру'
+            size_hint_y: None
+            height: '48dp'
+            width: '420dp'
+            #Обработчик
+            on_release:
+                root.reportContinueGame()

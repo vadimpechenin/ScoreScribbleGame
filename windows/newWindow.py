@@ -19,12 +19,12 @@ class NewWindow(MDScreen):
 
     def addNewGamer(self):
         if (self.item==0):
-            AE.ApplicationSettingObj.gamerNames=[]
-            AE.ApplicationSettingObj.gamerCount = []
-            AE.ApplicationSettingObj.round = []
-            AE.ApplicationSettingObj.timeOfGameInSec = []
+            AE.AppSetObj.gamerNames=[]
+            AE.AppSetObj.gamerCount = []
+            AE.AppSetObj.round = []
+            AE.AppSetObj.timeOfGameInSec = []
 
-        AE.ApplicationSettingObj.gamerNames.append(self.ids.text_input1.text)
+        AE.AppSetObj.gamerNames.append(self.ids.text_input1.text)
         self.ids.text_input1.text = ''
         self.item += 1
         self.ids.text_label1.text = AE.title_label_new[0] + str(self.item + 1)
@@ -32,5 +32,5 @@ class NewWindow(MDScreen):
 
     def newGame(self):
         self.item = 0
-        AE.ServerProxyObj.saveAndLoadGame(2, self.ids.text_input2.text, AE.ApplicationSettingObj)
+        AE.ServerProxyObj.saveAndLoadGame(2, self.ids.text_input2.text, AE.AppSetObj)
         AE.NavigationrailObj.switchToGame()

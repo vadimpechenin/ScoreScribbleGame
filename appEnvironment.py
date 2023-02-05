@@ -7,7 +7,7 @@ koef = 1
 login = False
 
 TestObj = None
-ApplicationSettingObj = None
+AppSetObj = None
 
 NewWObj = None
 ContinueWObj = None
@@ -27,6 +27,8 @@ ServerHost = "127.0.0.1"
 ServerPort = 8080
 ServerProxyObj = None
 
+filenameEnv = []
+
 title_of_windows = ['Новая игра',
                     'Продолжить игру',
                     'Игровой процесс',
@@ -36,3 +38,9 @@ title_of_windows = ['Новая игра',
 
 title_label_new = ['Введите имя игрока ',
                    'Введите название файла']
+
+title_label_continue = ['Выберите файл и продолжите игру']
+
+title_label_game = ['Ходит ',
+                    'Общий счет ',
+                    'Имя игрока не введено']

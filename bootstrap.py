@@ -18,7 +18,11 @@ class Bootstrap:
             Window.size = (1100, 2300)
         AE.kv = Builder.load_file("windows/navigationrail.kv")
         AE.TestObj = Test()
-        AE.ApplicationSettingObj = ApplicationSettings()
+        AE.AppSetObj = ApplicationSettings()
+        AE.AppSetObj.gamerNames = []
+        AE.AppSetObj.gamerCount = []
+        AE.AppSetObj.round = []
+        AE.AppSetObj.timeOfGameInSec = ''
         AE.ServerProxyObj = ServerProxy(AE.ServerHost, AE.ServerPort)
     @staticmethod
     def run():

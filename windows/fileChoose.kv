@@ -1,0 +1,43 @@
+# -*- coding: Windows-1251 -*-
+#:import platform kivy.utils.platform
+
+<FileChoose>:
+    name: "filechoose"
+    id: my_widget
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 1
+
+        padding: 50
+        spacing: 20
+
+        Image:
+            id: my_image
+            size_hint_y: 1
+            size_hint_x: 1
+            pos_hint_x: 0.5
+            pos_hint_y: 0.5
+            source: ""
+
+        FileChooserListView:
+            id: filechooser
+            size_hint_y: 1
+            size_hint_x: 1
+            rootpath: '/storage/emulated/0/' if platform == 'android' else '/PYTHON/Programms/ScoreScribbleGame/resources/json/'
+            #rootpath: '/storage/emulated/0/'
+            #color: 0, 0, 1, 1
+            on_selection: my_widget.selected(filechooser.selection)
+
+        Button:
+            text: 'Вернуться назад'
+            size_hint_y: 0.3
+            height: '48dp'
+            #Обработчик
+            on_release:
+                #Очистка экрана выбора катинки
+                root.dellwidget()
+                #Переход на второе окно
+                root.switchToContinue()
+                #Переход окна вправо (текущее уходит влево)
+                #root.manager.transition.direction = "right"
