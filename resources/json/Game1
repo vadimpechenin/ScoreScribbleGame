@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"gamerNames": ["\u0412\u0430\u0434\u0438\u043c", "\u041e\u043b\u0435\u0433", "\u042f\u0448\u0430"], "gamerCount": [155, 147, 54], "round": [1, 2, 3], "timeOfGameInSec": [], "gamerIndex": 1}
+=======
+{"gamerNames": ["\u0412\u0430\u0434\u0438\u043c", "\u041e\u043b\u0435\u0433", "\u042f\u0448\u0430"], "gamerCount": [0, 0, 0], "round": [1], "timeOfGameInSec": [], "gamerIndex": 0}
+>>>>>>> origin/main
