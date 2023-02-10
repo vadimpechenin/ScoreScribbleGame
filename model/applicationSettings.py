@@ -4,6 +4,7 @@ class ApplicationSettings():
         gamerNames = []
         gamerCount = []
         round = []
+        gamerIndex = 0
         timeOfGameInSec = ''
 
 

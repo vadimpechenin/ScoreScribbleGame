@@ -1,6 +1,23 @@
 <LogInOutWindow>
     name: "logInOut"
 
-    MDLabel:
-        text: "LogInOut"
-        halign: "center"
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 2
+
+        MDLabel:
+            id: text_label
+            halign: 'center'
+            valign: 'top'
+            size_hint_y: None
+            padding_y: 15
+
+        Button:
+            text: 'Закрыть приложение'
+            size_hint_y: None
+            height: '48dp'
+            width: '420dp'
+            #Обработчик
+            on_release:
+                root.exit()
+                app.stop()

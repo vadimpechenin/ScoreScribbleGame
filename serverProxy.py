@@ -15,6 +15,9 @@ class ServerProxy:
         #Функция для сохранения и загрузки параметров игры
         if (filename == ''):
             filename = AE.nameOfJson
+        else:
+            AE.nameOfJson = filename
+
         if (pl==1):
             ApplicationSettingHelper.readSettingsFromFile(filename, parameters)
         else:

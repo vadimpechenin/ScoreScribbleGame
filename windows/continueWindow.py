@@ -19,4 +19,5 @@ class ContinueWindow(MDScreen):
     def reportContinueGame(self):
         #self.ids.text_input1.text = AE.filenameEnv[0]
         AE.ServerProxyObj.saveAndLoadGame(1, self.ids.text_input1.text, AE.AppSetObj)
+        AE.GameWObj.item = 1
         AE.NavigationrailObj.switchToGame()

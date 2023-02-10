@@ -40,6 +40,7 @@ class ApplicationSettingHelper():
         parameters.gamerCount = data.get('gamerCount')
         parameters.round = data.get('round')
         parameters.timeOfGameInSec = data.get('timeOfGameInSec')
+        parameters.gamerIndex = data.get('gamerIndex')
     @staticmethod
     def writeSettingsToFile(filename, parameters):
         #Добавить путь, записать в файл, формат json
@@ -52,6 +53,7 @@ class ApplicationSettingHelper():
             'gamerCount': parameters.gamerCount,
             'round': parameters.round,
             'timeOfGameInSec': parameters.timeOfGameInSec,
+            'gamerIndex' : parameters.gamerIndex
         }
 
         # .dumps() as a string
@@ -71,40 +73,3 @@ class ApplicationSettingHelper():
                 joinpath("ScoreScribbleGame").\
                 joinpath("resources").joinpath("json")
         return base_dir
-
-    @staticmethod
-    def nomenclatureListsUnpacking(parameters):
-        #Распаковка в списки справочника по номенклатуре деталей
-        parameters.nomenclatureNameList = []
-        parameters.nomenclatureIDList = []
-        for item in parameters.nomenclatureList:
-            parameters.nomenclatureNameList.append(item['name'])
-            parameters.nomenclatureIDList.append(item['id'])
-
-    @staticmethod
-    def operationTypeListsUnpacking(parameters):
-        #Распаковка в списки справочника по операциям
-        parameters.operationTypeDescriptionList = []
-        parameters.operationTypeIDList = []
-        for item in parameters.operationTypeList:
-            parameters.operationTypeDescriptionList.append(item['description'])
-            parameters.operationTypeIDList.append(item['id'])
-
-    @staticmethod
-    def stateTypeListsUnpacking(parameters):
-        # Распаковка в списки справочника по характеристикам годности
-        parameters.stateTypeDescriptionList = []
-        parameters.stateTypeIDList = []
-        for item in parameters.stateTypeList:
-            parameters.stateTypeDescriptionList.append(item['stateDescription'])
-            parameters.stateTypeIDList.append(item['id'])
-
-    @staticmethod
-    def partListsUnpacking(parameters):
-        # Распаковка в списки справочника по деталям
-        parameters.partTypeList = []
-        parameters.partExternalIdList = []
-        parameters.partIdList = []
-        for item in parameters.operationTypeList:
-            parameters.operationTypeDescriptionList.append(item['description'])
-            parameters.operationTypeIDList.append(item['id'])
