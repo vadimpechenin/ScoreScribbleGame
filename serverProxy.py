@@ -13,12 +13,16 @@ class ServerProxy:
 
     def saveAndLoadGame(self, pl, filename, parameters):
         #Функция для сохранения и загрузки параметров игры
-        if (filename == ''):
-            filename = AE.nameOfJson
-        else:
-            AE.nameOfJson = filename
+        try:
+            if (filename == ''):
+                filename = AE.nameOfJson
+            else:
+                AE.nameOfJson = filename
 
-        if (pl==1):
-            ApplicationSettingHelper.readSettingsFromFile(filename, parameters)
-        else:
-            ApplicationSettingHelper.writeSettingsToFile(filename, parameters)
+            if (pl==1):
+                ApplicationSettingHelper.readSettingsFromFile(filename, parameters)
+            else:
+                ApplicationSettingHelper.writeSettingsToFile(filename, parameters)
+            return True
+        except:
+            return False

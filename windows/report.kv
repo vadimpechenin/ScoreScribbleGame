@@ -1,6 +1,20 @@
 <ReportWindow>
     name: "report"
 
-    MDLabel:
-        text: "Report"
-        halign: "center"
+
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 2
+
+        MDLabel:
+            id: text_label
+            halign: 'center'
+            valign: 'top'
+            size_hint_y: None
+            padding_y: 15
+
+        BoxLayout:
+            id: ScrollWindowReportGlobalid
+            orientation: 'vertical'
+            size_hint: (1, 1)
+            pos_hint: {'x': 0.0, 'top': 1.0}
