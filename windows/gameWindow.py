@@ -65,7 +65,8 @@ class GameWindow(MDScreen):
         self.item = 1
 
     def reportWindow(self):
-        pass
+        AE.ReportWObj.ifTriggerReport = 1
+        AE.NavigationrailObj.switchToReport()
 
     def popupForFilter(self, title, text):
         PopupGrid = GridLayout(rows=2, size_hint_y=None)
