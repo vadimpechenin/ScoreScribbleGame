@@ -52,8 +52,11 @@ class GameWindow(MDScreen):
             #AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex] = AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex]+int(self.ids.text_input1.text)
             check = 0
             check = check + int(self.ids.text_input1.text)
-            AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex].append(int(
-                self.ids.text_input1.text))
+            if (AE.AppSetObj.round[-1]==1):
+                AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex][0] = check
+            else:
+                AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex].append(int(
+                    self.ids.text_input1.text))
             AE.AppSetObj.gamerIndex+=1
             if (AE.AppSetObj.gamerIndex==len(AE.AppSetObj.gamerNames)):
                 AE.AppSetObj.gamerIndex=0
@@ -66,7 +69,10 @@ class GameWindow(MDScreen):
             self.popupForFilter(title, text)
 
     def addNullResult(self):
-        AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex].append(0)
+        if (AE.AppSetObj.round[-1] == 1):
+            AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex][0] = 0
+        else:
+            AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex].append(0)
         AE.AppSetObj.gamerIndex += 1
 
         if (AE.AppSetObj.gamerIndex == len(AE.AppSetObj.gamerNames)):

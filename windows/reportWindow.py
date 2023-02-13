@@ -37,51 +37,70 @@ class ReportWindow(MDScreen):
         # Убедимся, что высота такая, чтобы было что прокручивать.
         leftGrid1.bind(minimum_height=leftGrid1.setter('height'))  #
         self.toggle = []
-        for i in range(len(AE.reportWindowmessageResponce.report_list)):
+        for i in range(len(AE.AppSetObj.round)+2):
             nasted = []
             self.toggle.append(nasted)
-            for j in range(len(AE.reportWindowmessageResponce.report_list[0])):
+            for j in range(len(AE.AppSetObj.gamerNames)+1):
                 nasted.append('')
         base1 = BoxLayout(orientation="vertical", size_hint=(1, None))
         scroll = ScrollView(size_hint=(1, 1), do_scroll_x=True, do_scroll_y=False)
         grid = MyGrid()
-        for index in range(len(AE.reportWindowmessageResponce.report_list[0])):
+        for index in range(len(AE.AppSetObj.gamerNames)+1):
             if (index == 0):
                 width = 50 * AE.koef
             else:
-                width = 150 * AE.koef
-
-            self.toggle[0][index] = Label(
-                size_hint_y=None,
-                size_hint_x=None,
-                height=40 * AE.koef,
-                width=width,
-                # text_size=self.size,
-                # halign="left",
-                # valign="middle",
-                # ,
-                padding=(10 * AE.koef, 10 * AE.koef),
-                text=str(AE.reportWindowmessageResponce.report_list[0][index]),
-                color='black'  # [0, 0, 1, 1]
-            )
+                width = 50 * AE.koef
+            if (index==0):
+                self.toggle[0][index] = Label(
+                    size_hint_y=None,
+                    size_hint_x=None,
+                    height=40 * AE.koef,
+                    width=width,
+                    padding=(10 * AE.koef, 10 * AE.koef),
+                    text="Раунд",
+                    color='black'  # [0, 0, 1, 1]
+                )
+            else:
+                self.toggle[0][index] = Label(
+                    size_hint_y=None,
+                    size_hint_x=None,
+                    height=40 * AE.koef,
+                    width=width,
+                    padding=(10 * AE.koef, 10 * AE.koef),
+                    text=str(AE.AppSetObj.gamerNames[index-1]),
+                    color='black'  # [0, 0, 1, 1]
+                )
             grid.add_widget(self.toggle[0][index])
         scroll.add_widget(grid)
         base1.add_widget(scroll)
         leftGrid1.add_widget(base1)
 
-        for index in range(1, len(AE.reportWindowmessageResponce.report_list)):
+        for index in range(1, len(AE.AppSetObj.round)+2):
             base1 = BoxLayout(orientation="vertical", size_hint=(1, None))
             scroll = ScrollView(size_hint=(1, 1), do_scroll_x=True, do_scroll_y=False)
             grid = MyGrid()
-            for index1 in range(len(AE.reportWindowmessageResponce.report_list[0])):
-                if (index1 == 0):
-                    width = 50 * AE.koef
+            for index1 in range(len(AE.AppSetObj.gamerNames)+1):
+                if (index<len(AE.AppSetObj.round)+1):
+                    if (index1 == 0):
+                        width = 50 * AE.koef
+                        text_str = str(AE.AppSetObj.round[index-1])
+                    else:
+                        width = 50 * AE.koef
+                        try:
+                            text_str = str(AE.AppSetObj.gamerCount[index1-1][index-1])
+                        except:
+                            text_str = "-"
                 else:
-                    width = 150 * AE.koef
-                if (index1 < 5):
-                    text_str = str(AE.reportWindowmessageResponce.report_list[index][index1])
-                else:
-                    text_str = str(round(AE.reportWindowmessageResponce.report_list[index][index1], 2))
+                    if (index1 == 0):
+                        width = 50 * AE.koef
+                        text_str = "Итого"
+                    else:
+                        width = 50 * AE.koef
+                        sum = 0
+                        for item in range(len(AE.AppSetObj.gamerCount[index1 - 1])):
+                            sum+=AE.AppSetObj.gamerCount[index1 - 1][item]
+                        text_str = str(sum)
+
                 self.toggle[index][index1] = Label(
                     size_hint_y=None,
                     size_hint_x=None,
