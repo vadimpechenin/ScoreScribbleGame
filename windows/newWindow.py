@@ -26,7 +26,7 @@ class NewWindow(MDScreen):
             AE.AppSetObj.gamerIndex = 0
 
         AE.AppSetObj.gamerNames.append(self.ids.text_input1.text)
-        AE.AppSetObj.gamerCount.append(0)
+        AE.AppSetObj.gamerCount.append([0])
         self.ids.text_input1.text = ''
         self.item += 1
         self.ids.text_label1.text = AE.title_label_new[0] + str(self.item + 1)

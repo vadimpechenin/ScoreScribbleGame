@@ -33,8 +33,13 @@ class GameWindow(MDScreen):
             time.sleep(0.3)
             if (self.item==1):
                 self.ids.text_label1.text = AE.title_label_game[0] + AE.AppSetObj.gamerNames[AE.AppSetObj.gamerIndex]
-                self.ids.text_label2.text = AE.title_label_game[1] + str(
-                    AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex])
+
+                listCount = AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex]
+                count = 0
+                for item in listCount:
+                    count += item
+
+                self.ids.text_label2.text = AE.title_label_game[1] + str(count)
                 self.ids.text_label0.text = AE.title_label_game[3] + str(
                     AE.AppSetObj.round[-1])
                 self.item = 0
@@ -44,7 +49,11 @@ class GameWindow(MDScreen):
 
     def addResult(self):
         try:
-            AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex] = AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex]+int(self.ids.text_input1.text)
+            #AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex] = AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex]+int(self.ids.text_input1.text)
+            check = 0
+            check = check + int(self.ids.text_input1.text)
+            AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex].append(int(
+                self.ids.text_input1.text))
             AE.AppSetObj.gamerIndex+=1
             if (AE.AppSetObj.gamerIndex==len(AE.AppSetObj.gamerNames)):
                 AE.AppSetObj.gamerIndex=0
@@ -57,7 +66,9 @@ class GameWindow(MDScreen):
             self.popupForFilter(title, text)
 
     def addNullResult(self):
+        AE.AppSetObj.gamerCount[AE.AppSetObj.gamerIndex].append(0)
         AE.AppSetObj.gamerIndex += 1
+
         if (AE.AppSetObj.gamerIndex == len(AE.AppSetObj.gamerNames)):
             AE.AppSetObj.gamerIndex = 0
             AE.AppSetObj.round.append(AE.AppSetObj.round[-1] + 1)
